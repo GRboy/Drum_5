@@ -7,12 +7,14 @@ function settingHandler() {
       var input_key = this.innerHTML;
 
       makeSound(input_key);
+      buttonanime(input_key);
     });
   }
 }
 //document 전체에 대해서 keydown을 등록한다.
 document.addEventListener("keydown", function(event) {
   makeSound(event.key);
+  buttonanime(event.key);
 })
 
 function makeSound(key) {
@@ -50,7 +52,14 @@ function makeSound(key) {
       break;
   }
 }
-
+function buttonanime(currentkey){
+  debugger;
+  var activeButton = document.querySelector("."+currentkey);
+  activeButton.classList.add("pressed");
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  },100);
+}
 settingHandler();
 // function handleClick(){
 //   alert("i go t clicked");
